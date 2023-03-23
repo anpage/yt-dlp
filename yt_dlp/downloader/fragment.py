@@ -1,3 +1,4 @@
+import binascii
 import concurrent.futures
 import contextlib
 import http.client
@@ -114,7 +115,10 @@ class FragmentFD(FileDownloader):
             frag_index_stream.close()
 
     def _download_fragment(self, ctx, frag_url, info_dict, headers=None, request_data=None):
-        fragment_filename = '%s-Frag%d' % (ctx['tmpfilename'], ctx['fragment_index'])
+        timestamp = time.time()
+        unique = ctx['tmpfilename'] + str(timestamp)
+        hash = binascii.crc32(bytes(unique, 'utf-8'))
+        fragment_filename = '%s-%d-Frag%d' % (ctx['tmpfilename'], hash, ctx['fragment_index'])
         fragment_info_dict = {
             'url': frag_url,
             'http_headers': headers or info_dict.get('http_headers'),

@@ -1,3 +1,4 @@
+import binascii
 import enum
 import json
 import os.path
@@ -158,7 +159,10 @@ class ExternalFD(FragmentFD):
         decrypt_fragment = self.decrypter(info_dict)
         dest, _ = self.sanitize_open(tmpfilename, 'wb')
         for frag_index, fragment in enumerate(info_dict['fragments']):
-            fragment_filename = '%s-Frag%d' % (tmpfilename, frag_index)
+            timestamp = time.time()
+            unique = tmpfilename + str(timestamp)
+            hash = binascii.crc32(bytes(unique, 'utf-8'))
+            fragment_filename = '%s-%d-Frag%d' % (tmpfilename, hash, frag_index)
             try:
                 src, _ = self.sanitize_open(fragment_filename, 'rb')
             except OSError as err:
@@ -315,7 +319,10 @@ class Aria2cFD(ExternalFD):
             url_list_file = '%s.frag.urls' % tmpfilename
             url_list = []
             for frag_index, fragment in enumerate(info_dict['fragments']):
-                fragment_filename = '%s-Frag%d' % (os.path.basename(tmpfilename), frag_index)
+                timestamp = time.time()
+                unique = os.path.basename(tmpfilename) + str(timestamp)
+                hash = binascii.crc32(bytes(unique, 'utf-8'))
+                fragment_filename = '%s-%d-Frag%d' % (os.path.basename(tmpfilename), hash, frag_index)
                 url_list.append('%s\n\tout=%s' % (fragment['url'], self._aria2c_filename(fragment_filename)))
             stream, _ = self.sanitize_open(url_list_file, 'wb')
             stream.write('\n'.join(url_list).encode())
