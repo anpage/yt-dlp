@@ -247,13 +247,20 @@ from .bongacams import BongaCamsIE
 from .bostonglobe import BostonGlobeIE
 from .box import BoxIE
 from .boxcast import BoxCastVideoIE
-from .booyah import BooyahClipsIE
 from .bpb import BpbIE
 from .br import (
     BRIE,
     BRMediathekIE,
 )
 from .bravotv import BravoTVIE
+from .brainpop import (
+    BrainPOPIE,
+    BrainPOPJrIE,
+    BrainPOPELLIE,
+    BrainPOPEspIE,
+    BrainPOPFrIE,
+    BrainPOPIlIE,
+)
 from .breakcom import BreakIE
 from .breitbart import BreitBartIE
 from .brightcove import (
@@ -298,7 +305,10 @@ from .cbc import (
     CBCGemPlaylistIE,
     CBCGemLiveIE,
 )
-from .cbs import CBSIE
+from .cbs import (
+    CBSIE,
+    ParamountPressExpressIE,
+)
 from .cbslocal import (
     CBSLocalIE,
     CBSLocalArticleIE,
@@ -345,6 +355,7 @@ from .ciscolive import (
 )
 from .ciscowebex import CiscoWebexIE
 from .cjsw import CJSWIE
+from .clipchamp import ClipchampIE
 from .cliphunter import CliphunterIE
 from .clippit import ClippitIE
 from .cliprs import ClipRsIE
@@ -395,6 +406,8 @@ from .crowdbunker import (
 from .crunchyroll import (
     CrunchyrollBetaIE,
     CrunchyrollBetaShowIE,
+    CrunchyrollMusicIE,
+    CrunchyrollArtistIE,
 )
 from .cspan import CSpanIE, CSpanCongressIE
 from .ctsnews import CtsNewsIE
@@ -441,6 +454,10 @@ from .deezer import (
 )
 from .democracynow import DemocracynowIE
 from .detik import DetikEmbedIE
+from .dlf import (
+    DLFIE,
+    DLFCorpusIE,
+)
 from .dfb import DFBIE
 from .dhm import DHMIE
 from .digg import DiggIE
@@ -674,10 +691,18 @@ from .gfycat import GfycatIE
 from .giantbomb import GiantBombIE
 from .giga import GigaIE
 from .glide import GlideIE
+from .globalplayer import (
+    GlobalPlayerLiveIE,
+    GlobalPlayerLivePlaylistIE,
+    GlobalPlayerAudioIE,
+    GlobalPlayerAudioEpisodeIE,
+    GlobalPlayerVideoIE
+)
 from .globo import (
     GloboIE,
     GloboArticleIE,
 )
+from .gmanetwork import GMANetworkVideoIE
 from .go import GoIE
 from .godtube import GodTubeIE
 from .gofile import GofileIE
@@ -709,13 +734,16 @@ from .hearthisat import HearThisAtIE
 from .heise import HeiseIE
 from .hellporno import HellPornoIE
 from .helsinki import HelsinkiIE
-from .hentaistigma import HentaiStigmaIE
 from .hgtv import HGTVComShowIE
 from .hketv import HKETVIE
 from .hidive import HiDiveIE
 from .historicfilms import HistoricFilmsIE
 from .hitbox import HitboxIE, HitboxLiveIE
 from .hitrecord import HitRecordIE
+from .hollywoodreporter import (
+    HollywoodReporterIE,
+    HollywoodReporterPlaylistIE,
+)
 from .holodex import HolodexIE
 from .hotnewhiphop import HotNewHipHopIE
 from .hotstar import (
@@ -727,6 +755,7 @@ from .hotstar import (
 )
 from .howcast import HowcastIE
 from .howstuffworks import HowStuffWorksIE
+from .hrefli import HrefLiRedirectIE
 from .hrfensehen import HRFernsehenIE
 from .hrti import (
     HRTiIE,
@@ -935,10 +964,6 @@ from .limelight import (
     LimelightMediaIE,
     LimelightChannelIE,
     LimelightChannelListIE,
-)
-from .line import (
-    LineLiveIE,
-    LineLiveChannelIE,
 )
 from .linkedin import (
     LinkedInIE,
@@ -1219,6 +1244,8 @@ from .nhk import (
     NhkForSchoolBangumiIE,
     NhkForSchoolSubjectIE,
     NhkForSchoolProgramListIE,
+    NhkRadioNewsPageIE,
+    NhkRadiruIE,
 )
 from .nhl import NHLIE
 from .nick import (
@@ -1390,6 +1417,7 @@ from .periscope import (
     PeriscopeIE,
     PeriscopeUserIE,
 )
+from .pgatour import PGATourIE
 from .philharmoniedeparis import PhilharmonieDeParisIE
 from .phoenix import PhoenixIE
 from .photobucket import PhotobucketIE
@@ -1606,6 +1634,11 @@ from .rtnews import (
 from .rtp import RTPIE
 from .rtrfm import RTRFMIE
 from .rts import RTSIE
+from .rtvcplay import (
+    RTVCPlayIE,
+    RTVCPlayEmbedIE,
+    RTVCKalturaIE,
+)
 from .rtve import (
     RTVEALaCartaIE,
     RTVEAudioIE,
@@ -1675,6 +1708,7 @@ from .scte import (
 )
 from .scrolller import ScrolllerIE
 from .seeker import SeekerIE
+from .senalcolombia import SenalColombiaLiveIE
 from .senategov import SenateISVPIE, SenateGovIE
 from .sendtonews import SendtoNewsIE
 from .servus import ServusIE
@@ -1772,6 +1806,7 @@ from .spike import (
     BellatorIE,
     ParamountNetworkIE,
 )
+from .stageplus import StagePlusVODConcertIE
 from .startrek import StarTrekIE
 from .stitcher import (
     StitcherIE,
@@ -1954,6 +1989,7 @@ from .traileraddict import TrailerAddictIE
 from .triller import (
     TrillerIE,
     TrillerUserIE,
+    TrillerShortIE,
 )
 from .trilulilu import TriluliluIE
 from .trovo import (
@@ -2280,6 +2316,8 @@ from .weibo import (
     WeiboMobileIE
 )
 from .weiqitv import WeiqiTVIE
+from .wevidi import WeVidiIE
+from .whyp import WhypIE
 from .wikimedia import WikimediaIE
 from .willow import WillowIE
 from .wimtv import WimTVIE
@@ -2334,8 +2372,6 @@ from .xxxymovies import XXXYMoviesIE
 from .yahoo import (
     YahooIE,
     YahooSearchIE,
-    YahooGyaOPlayerIE,
-    YahooGyaOIE,
     YahooJapanNewsIE,
 )
 from .yandexdisk import YandexDiskIE
